@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors     = ["Jesper Christiansen"]
   spec.email       = ["hi@jespr.com"]
   spec.homepage    = "https://github.com/jespr/pay_features"
-  spec.summary     = "Provide feature checks for subscription plans"
-  spec.description = "Provide feature checks for subscription plans"
+  spec.summary     = "Specify features for your subscription plans and check that the user has access to those"
+  spec.description = "Specify features for your subscription plans and check that the user has access to those"
   spec.license     = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  spec.add_dependency "rails", "~> 6.0.1"
+  spec.add_dependency "rails", "~> 6.0.0"
 
   spec.add_development_dependency "sqlite3"
 end

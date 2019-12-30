@@ -1,5 +1,8 @@
+require "pay_features/engine"
+
 module PayFeatures
   mattr_accessor :plan_class
+
   @@plan_class = 'Plan'
 
   def self.setup
