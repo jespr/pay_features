@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_30_182348) do
+ActiveRecord::Schema.define(version: 2019_12_31_065514) do
 
   create_table "pay_features_pay_features", force: :cascade do |t|
     t.string "description"
@@ -36,6 +36,10 @@ ActiveRecord::Schema.define(version: 2019_12_30_182348) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "previous_plan_id"
+    t.integer "next_plan_id"
+    t.index ["next_plan_id"], name: "index_plans_on_next_plan_id"
+    t.index ["previous_plan_id"], name: "index_plans_on_previous_plan_id"
   end
 
   add_foreign_key "pay_features_plan_features", "pay_features_pay_features", column: "pay_feature_id"

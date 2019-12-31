@@ -2,8 +2,8 @@
 
 one:
   plan: one
-  feature: one
+  pay_feature: one
 
 two:
   plan: two
-  feature: two
+  pay_feature: two

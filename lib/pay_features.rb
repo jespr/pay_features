@@ -3,8 +3,10 @@ require "pay_features/plan"
 
 module PayFeatures
   mattr_accessor :plan_class
+  mattr_accessor :plan_table
 
   @@plan_class = 'Plan'
+  @@plan_table = 'plans'
 
   def self.setup
     yield self
