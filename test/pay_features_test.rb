@@ -7,11 +7,11 @@ class PayFeatures::Test < ActiveSupport::TestCase
     assert_kind_of Module, PayFeatures
   end
 
-  test "default plan class is Plan" do
+  test 'default plan class is Plan' do
     assert_equal 'Plan', PayFeatures.plan_class
   end
 
-  test "default plan table is plans" do
-    assert_equal "plans", PayFeatures.plan_table
+  test 'default plan table is plans' do
+    assert_equal 'plans', PayFeatures.plan_table
   end
 end
