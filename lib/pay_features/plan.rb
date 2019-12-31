@@ -37,7 +37,7 @@ module PayFeatures
 
         pay_features.order(:order).each do |f|
           index = display_features.index { |df| df[:identifier] == f.identifier }
-          value = { identifier: f.identifier, description: f.description }
+          value = { identifier: f.identifier, description: f.description, amount: f.amount }
 
           if index
             value.merge!({ new_feature: true })

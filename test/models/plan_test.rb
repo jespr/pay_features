@@ -10,7 +10,7 @@ class PlanTest < ActiveSupport::TestCase
     assert_equal "my_feature", feature.identifier
     assert plan.has_feature?(:my_feature)
     assert_equal 2, plan.amount_for(:my_feature)
-    assert_equal [{:identifier=>"my_feature", :description=>"My feature"}], plan.display_features
+    assert_equal [{:identifier=>"my_feature", :description=>"My feature", :amount=>2}], plan.display_features
   end
 
   test "display features shows features from the previous plan" do
@@ -22,7 +22,7 @@ class PlanTest < ActiveSupport::TestCase
     second_plan.pay_features.new(identifier: "projects", amount: 2)
     second_plan.save!
 
-    assert_equal [{:identifier=>"users", :description=>"2 users"}, {:identifier=>"projects", :description=>nil, :new_feature=>true}], second_plan.display_features
+    assert_equal [{:identifier=>"users", :description=>"2 users"}, {:identifier=>"projects", :description=>nil, :amount=>2, :new_feature=>true}], second_plan.display_features
   end
 
   test "display features shows feature as new if it exists in the previous plan and the current plan" do
@@ -34,7 +34,7 @@ class PlanTest < ActiveSupport::TestCase
     second_plan.pay_features.new(identifier: "users", description: "3 users", amount: 3)
     second_plan.save!
 
-    assert_equal [{:identifier=>"users", :description=>"3 users", :new_feature=>true}], second_plan.display_features
+    assert_equal [{:identifier=>"users", :description=>"3 users", :amount=>3, :new_feature=>true}], second_plan.display_features
   end
 end
  
