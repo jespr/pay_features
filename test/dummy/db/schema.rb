@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,38 +12,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_31_065514) do
-
-  create_table "pay_features_pay_features", force: :cascade do |t|
-    t.string "description"
-    t.string "identifier"
-    t.integer "amount"
-    t.integer "order"
-    t.boolean "hidden"
-    t.boolean "enabled"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+ActiveRecord::Schema.define(version: 20_191_231_065_514) do
+  create_table 'pay_features_pay_features', force: :cascade do |t|
+    t.string 'description'
+    t.string 'identifier'
+    t.integer 'amount'
+    t.integer 'order'
+    t.boolean 'hidden'
+    t.boolean 'enabled'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "pay_features_plan_features", force: :cascade do |t|
-    t.integer "plan_id", null: false
-    t.integer "pay_feature_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["pay_feature_id"], name: "index_pay_features_plan_features_on_pay_feature_id"
-    t.index ["plan_id"], name: "index_pay_features_plan_features_on_plan_id"
+  create_table 'pay_features_plan_features', force: :cascade do |t|
+    t.integer 'plan_id', null: false
+    t.integer 'pay_feature_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['pay_feature_id'], name: 'index_pay_features_plan_features_on_pay_feature_id'
+    t.index ['plan_id'], name: 'index_pay_features_plan_features_on_plan_id'
   end
 
-  create_table "plans", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "previous_plan_id"
-    t.integer "next_plan_id"
-    t.index ["next_plan_id"], name: "index_plans_on_next_plan_id"
-    t.index ["previous_plan_id"], name: "index_plans_on_previous_plan_id"
+  create_table 'plans', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.integer 'previous_plan_id'
+    t.integer 'next_plan_id'
+    t.index ['next_plan_id'], name: 'index_plans_on_next_plan_id'
+    t.index ['previous_plan_id'], name: 'index_plans_on_previous_plan_id'
   end
 
-  add_foreign_key "pay_features_plan_features", "pay_features_pay_features", column: "pay_feature_id"
-  add_foreign_key "pay_features_plan_features", "plans"
+  add_foreign_key 'pay_features_plan_features', 'pay_features_pay_features', column: 'pay_feature_id'
+  add_foreign_key 'pay_features_plan_features', 'plans'
 end

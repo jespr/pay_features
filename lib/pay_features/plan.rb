@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_support/concern'
 
 module PayFeatures
@@ -8,7 +10,7 @@ module PayFeatures
     SMALLEST_AMOUNT = -9_999_999
 
     included do
-      has_many :plan_features, class_name: "PayFeatures::PlanFeature"
+      has_many :plan_features, class_name: 'PayFeatures::PlanFeature'
       has_many :pay_features, through: :plan_features, foreign_key: :pay_feature_id
 
       belongs_to :previous_plan, class_name: PayFeatures.plan_class, optional: true
@@ -34,9 +36,9 @@ module PayFeatures
           value = { identifier: f.identifier, description: f.description, amount: f.amount }
 
           if index
-            display_features[index] = value.merge({ new_feature: true })
+            display_features[index] = value.merge(new_feature: true)
           else
-            value.merge!({ new_feature: true }) if previous_plan
+            value.merge!(new_feature: true) if previous_plan
             display_features << value
           end
         end
@@ -51,8 +53,6 @@ module PayFeatures
           feature
         elsif !feature && previous_plan.present?
           previous_plan.find_feature(identifier)
-        else
-          nil
         end
       end
 

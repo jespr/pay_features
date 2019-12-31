@@ -1,5 +1,7 @@
-require "pay_features/engine"
-require "pay_features/plan"
+# frozen_string_literal: true
+
+require 'pay_features/engine'
+require 'pay_features/plan'
 
 module PayFeatures
   mattr_accessor :plan_class
