@@ -30,7 +30,7 @@ Install migrations by running
 rails pay_features:install:migrations
 ```
 
-That will add two new tables as well as add `previous_plan_id` and `next_plan_id` to your existing `plans` table.
+That will add two new tables as well as add `previous_plan_id` to your existing `plans` table.
 
 ## Usage
 

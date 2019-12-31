@@ -14,7 +14,6 @@ module PayFeatures
       has_many :pay_features, through: :plan_features, foreign_key: :pay_feature_id
 
       belongs_to :previous_plan, class_name: PayFeatures.plan_class, optional: true
-      belongs_to :next_plan, class_name: PayFeatures.plan_class, optional: true
 
       def amount_for(identifier)
         feature = find_feature(identifier)

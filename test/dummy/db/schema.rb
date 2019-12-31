@@ -38,8 +38,6 @@ ActiveRecord::Schema.define(version: 20_191_231_065_514) do
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
     t.integer 'previous_plan_id'
-    t.integer 'next_plan_id'
-    t.index ['next_plan_id'], name: 'index_plans_on_next_plan_id'
     t.index ['previous_plan_id'], name: 'index_plans_on_previous_plan_id'
   end
 
