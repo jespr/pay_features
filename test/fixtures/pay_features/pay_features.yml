@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  identifier: MyString
+  amount: 1
+  order: 1
+  hidden: false
+  enabled: false
+
+two:
+  description: MyString
+  identifier: MyString
+  amount: 1
+  order: 1
+  hidden: false
+  enabled: false
