@@ -27,36 +27,21 @@ module PayFeatures
       end
 
       def display_features
-        display_features = []
+        display_features = features_from_previous
 
-        if previous_plan
-          previous_plan_display_features.each do |f|
-            display_features << { identifier: f[:identifier], description: f[:description] }
-          end
-        end
-
-        pay_features.order(:order).each do |f|
+        pay_features.ordered.each do |f|
           index = display_features.index { |df| df[:identifier] == f.identifier }
           value = { identifier: f.identifier, description: f.description, amount: f.amount }
 
           if index
-            value.merge!({ new_feature: true })
-            display_features[index] = value
+            display_features[index] = value.merge({ new_feature: true })
           else
-            if previous_plan
-              value.merge!({ new_feature: true })
-            end
+            value.merge!({ new_feature: true }) if previous_plan
             display_features << value
           end
         end
 
         display_features.flatten
-      end
-
-      private
-
-      def previous_plan_display_features
-        previous_plan.display_features
       end
 
       def find_feature(identifier)
@@ -65,12 +50,28 @@ module PayFeatures
         if feature
           feature
         elsif !feature && previous_plan.present?
-          previous_plan.pay_features.find_by(identifier: identifier)
+          previous_plan.find_feature(identifier)
         else
           nil
         end
       end
 
+      private
+
+      def previous_plan_display_features
+        previous_plan.display_features
+      end
+
+      def features_from_previous
+        previous_features = []
+        return previous_features unless previous_plan
+
+        previous_plan_display_features.each do |f|
+          previous_features << { identifier: f[:identifier], description: f[:description] }
+        end
+
+        previous_features
+      end
     end
   end
 end

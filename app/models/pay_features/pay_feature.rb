@@ -4,5 +4,7 @@ module PayFeatures
 
     has_many :plan_features, class_name: "PayFeatures#PlanFeature"
     has_many :plans, through: :plan_features
+
+    scope :ordered, ->{ order(:order) }
   end
 end
